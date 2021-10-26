@@ -187,7 +187,7 @@ describe('DAY 4: Test Arrays', () => {
         let array = hotPeppers;
         let myFavorite = 'Habanero';
         // use an array method
-        let found;
+        let found = array.find(element => element === 'Habanero');
 
         expect(found).toBe(myFavorite);
     });
