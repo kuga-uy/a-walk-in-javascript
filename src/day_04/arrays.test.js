@@ -96,7 +96,7 @@ describe('DAY 4: Test Arrays', () => {
     it('Remove an element off from inner boundaries of the array', () => {
         let array = ['a', 'b', 'c', 'd'];
         // use a method to remove it
-        array.splice(1,1);
+        array.splice(1, 1);
         expect(array.indexOf('b')).toBe(-1);
     });
 
@@ -129,15 +129,12 @@ describe('DAY 4: Test Arrays', () => {
     it('Create an array from a string (method)', () => {
         let string = 'a-b-c-d';
         // use a method to create it
-        let array = string.split("");
-        
-        for (let i = 0; i <= array.length; i++ ){
-            if (array[i] === '-'){
-                array.splice(i, 1); 
+        let array = string.split('');     
+        for (let i = 0; i <= array.length; i++ ) {
+            if (array[i] === '-') {
+                array.splice(i, 1);
             }
         }
-           
-
         expect(array).toEqual(['a', 'b', 'c', 'd']);
     });
 
@@ -152,7 +149,7 @@ describe('DAY 4: Test Arrays', () => {
     it('Reverse the a string using the learned techniques', () => {
         let string = 'abcd';
         // use available method for strings an arrays
-        let reversed = string.split("").reverse().join("");
+        let reversed = string.split('').reverse().join('');
 
         expect(reversed).toEqual('dcba');
     });
