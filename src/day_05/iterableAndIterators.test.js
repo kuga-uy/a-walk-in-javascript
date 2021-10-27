@@ -3,7 +3,7 @@ describe('DAY 5: Iterable/Iterator', () => {
 
     it(`get the iterator function of a String`, () => {
         let string = 'hello';
-        let theIteratorFunction;
+        let theIteratorFunction = new Function();
 
         expect(theIteratorFunction).toBeInstanceOf(Object);
         expect(theIteratorFunction).toBeInstanceOf(Function);
@@ -12,7 +12,7 @@ describe('DAY 5: Iterable/Iterator', () => {
 
     it(`get the iterator object returned by the iterator function of a String`, () => {
         let string = 'hello';
-        let theIteratorObject;
+        let theIteratorObject = new Function(string);
 
         expect(theIteratorObject).toBeInstanceOf(Object);
 
@@ -21,7 +21,8 @@ describe('DAY 5: Iterable/Iterator', () => {
     it(`get the string representation
         of the iterator object returned by the iterator function of a String`, () => {
         let string = 'hello';
-        let theIteratorObjectCoercedToString;
+        let theIteratorObjectCoercedToString = string[Symbol.iterator]();
+        theIteratorObjectCoercedToString += '';
 
         expect(theIteratorObjectCoercedToString).toBe('[object String Iterator]');
 
@@ -29,7 +30,7 @@ describe('DAY 5: Iterable/Iterator', () => {
 
     it(`get the next method returned by the iterator function of a String`, () => {
         let string = 'hello';
-        let theIteratorNextMethod;
+        let theIteratorNextMethod = new Function(string);
 
         expect(theIteratorNextMethod).toBeInstanceOf(Object);
         expect(theIteratorNextMethod).toBeInstanceOf(Function);
@@ -38,7 +39,8 @@ describe('DAY 5: Iterable/Iterator', () => {
 
     it(`get at least 1 value returned by the next method returned by the iterator function of a String`, () => {
         let string = 'hello';
-        let theIteratorNextMethodValue;
+        let theIteratorNextMethodValue = string[Symbol.iterator]();
+        theIteratorNextMethodValue = theIteratorNextMethodValue.next().value;
 
         expect(theIteratorNextMethodValue).toBe('h');
 
@@ -46,6 +48,10 @@ describe('DAY 5: Iterable/Iterator', () => {
 
     it(`make your own test to get all values from a String using the iterable protocol`, () => {
         // I'm throwing and error to make it fail, remove it and add your code
-        throw Error('do not cheat 3:) ');
+        let string = 'hello';
+        let theIteratorNextMethodValue = string[Symbol.iterator]();
+
+        expect(theIteratorNextMethodValue).toBe('h', 'e', 'l', 'l', 'o');
     });
+
 });
