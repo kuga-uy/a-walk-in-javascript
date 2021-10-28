@@ -4,6 +4,7 @@ describe('DAY 6: Test Functions', () => {
         declare a function named hello`, () => {
 
         // add your code here
+            const hello = new Function();
 
         expect(hello).toBeInstanceOf(Function);
     });
@@ -12,7 +13,7 @@ describe('DAY 6: Test Functions', () => {
         write an anonymous function expression with an empty body`, () => {
 
         // add your code here
-
+            const hello = function (){};
         expect(hello).toBeInstanceOf(Function);
         expect(hello.toString().replace(/[^a-z0-9_$]/igm, '')).toBe('function');
     });
@@ -21,6 +22,7 @@ describe('DAY 6: Test Functions', () => {
         write a named function expression with an empty body`, () => {
 
         // add your code here
+        const hello = function name(){};
 
         expect(hello).toBeInstanceOf(Function);
         expect(hello.toString().replace(/[^a-z0-9_$]/igm, '')).toMatch(/^function[a-z0-9_$]+$/);
@@ -36,9 +38,9 @@ describe('DAY 6: Test Functions', () => {
         /**
          * @returns {undefined}
          */
-        function b () {
+        (function b () {
             a++;
-        }
+        })();
 
         expect(a).toBe(2);
     });
@@ -56,7 +58,7 @@ describe('DAY 6: Test Functions', () => {
         function a (b, c, d, e) {}
 
         // add your code here
-        let arity;
+        let arity = a.length;
 
         expect(arity).toBe(4);
     });
@@ -67,7 +69,9 @@ describe('DAY 6: Test Functions', () => {
          * 
          * @returns {undefined}
          */
-        function myFunction () { }
+        function myFunction () {
+            return myFunction.name;  
+        }
 
         // change the test
         expect(myFunction).toBe('myFunction');
@@ -83,8 +87,8 @@ describe('DAY 6: Test Functions', () => {
          */
         function b () {
             // add your code here
-            a = 2;
-            return ++a;
+            let b = 2;
+            return ++b;
         }
 
         expect(a).toBe(1);

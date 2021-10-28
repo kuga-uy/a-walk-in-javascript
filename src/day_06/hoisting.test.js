@@ -6,7 +6,7 @@ describe('DAY 6: Test Hoisting', () => {
         expect(myHoistedVariable).toBeUndefined();
 
         // change the declaration statement to complete the test
-        let myHoistedVariable = 3;
+        var myHoistedVariable = 3;
     });
 
     it(`myHoistedFunctionExpression should be hoisted as undefined,
@@ -15,7 +15,7 @@ describe('DAY 6: Test Hoisting', () => {
         expect(myHoistedFunctionExpression).toBeUndefined();
 
         // change the declaration statement to complete the test
-        const myHoistedFunctionExpression = function () {
+        var myHoistedFunctionExpression = function () {
 
         };
     });
@@ -25,13 +25,12 @@ describe('DAY 6: Test Hoisting', () => {
 
         // change the expect clause to complete the test
         // @see https://jestjs.io/docs/en/expect documentation for help
-        expect(myHoistedFunctionDeclaration).toThrow();
+       
 
-        /**
-         * @returns {undefined}
-         */
-        function myHoistedFunctionDeclaration () {
-
-        }
+        
+        expect(myHoistedFunctionDeclaration).toBeUndefined();
+        // change the declaration statement to complete the test
+        function myHoistedFunctionDeclaration (){};
+        
     });
 });
