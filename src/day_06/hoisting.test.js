@@ -28,7 +28,7 @@ describe('DAY 6: Test Hoisting', () => {
        
 
         
-        expect(myHoistedFunctionDeclaration).toBeUndefined();
+        expect(myHoistedFunctionDeclaration()).toBeUndefined();
         // change the declaration statement to complete the test
         function myHoistedFunctionDeclaration (){};
         
