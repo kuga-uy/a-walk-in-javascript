@@ -50,8 +50,11 @@ describe('DAY 5: Iterable/Iterator', () => {
         // I'm throwing and error to make it fail, remove it and add your code
         let string = 'hello';
         let theIteratorNextMethodValue = string[Symbol.iterator]();
-
-        expect(theIteratorNextMethodValue).toBe('h', 'e', 'l', 'l', 'o');
+       
+           theIteratorNextMethodValue = theIteratorNextMethodValue.next().value + theIteratorNextMethodValue.next().value +
+           theIteratorNextMethodValue.next().value + theIteratorNextMethodValue.next().value + theIteratorNextMethodValue.next().value;
+        
+        expect(theIteratorNextMethodValue).toBe('hello');
     });
 
 });
