@@ -70,11 +70,11 @@ describe('DAY 6: Test Functions', () => {
          * @returns {undefined}
          */
         function myFunction () {
-            return myFunction.name;  
+           return myFunction.name;
         }
 
         // change the test
-        expect(myFunction).toBe('myFunction');
+        expect(myFunction()).toBe('myFunction');
     });
 
     it(`(Side effect)
