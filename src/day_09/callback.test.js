@@ -14,7 +14,7 @@ describe('DAY 9: Callback', () => {
          */
         let caller = () => {};
 
-        let result = caller(callback);
+        let result = caller();
 
         expect(callback).toBeCalledWith(callbackArgument);
         expect(result).toBe(callback);

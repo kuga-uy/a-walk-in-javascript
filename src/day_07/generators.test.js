@@ -14,8 +14,11 @@ describe('DAY 7: generators', () => {
          * @param {array} input
          * @returns {Generator}
          */
-        function gen () {
-
+        function* gen (msg) {
+            let index = 0;
+            while (index < msg.length){
+               yield msg[index++];
+            }
         }
 
         let myGen = gen(msg);

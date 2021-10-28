@@ -15,7 +15,7 @@ describe('DAY 9: Event Loop', () => {
             }
         }
 
-        for (var i = 0; i < 4; i++) {
+        for (let i = 0; i < 4; i++) {
             setTimeout(() => counter(i), 0);
         }
 

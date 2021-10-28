@@ -11,8 +11,10 @@ describe('DAY 8: classes', () => {
             /**
              * 
              * @returns {Dog}
+             * @param {string} name
              */
-            constructor () {
+            constructor (name) {
+                this.name = name;
                 this.favoriteThing = `food`;
             }
 
@@ -23,7 +25,7 @@ describe('DAY 8: classes', () => {
         expect(myDog1.name).toBe('fido');
         expect(myDog1.favoriteThing).toBe(`food`);
 
-        let myDog2 = new Dog();
+        let myDog2 = new Dog('lonely dog without a name');
 
         expect(myDog2.name).toBe(`lonely dog without a name`);
         expect(myDog2.favoriteThing).toBe(`food`);
@@ -49,17 +51,20 @@ describe('DAY 8: classes', () => {
         /**
          * @extends Mammal
          */
-        class Dog {
-
+        class Dog extends Mammal {
+            constructor () {
+            super() 
+            
             /**
              * 
              * @returns {Dog}
              */
-            constructor () {
+                this.hasFur = true;
+                this.isWarmBlooded = true;
                 this.favoriteThing = `food`;
             }
-
         }
+      
 
         let myDog = new Dog();
 
@@ -87,15 +92,21 @@ describe('DAY 8: classes', () => {
             /**
              * @returns {string}
              */
-            static jump () {
+            jump () {
                 return `jumping`;
             }
 
             /**
              * @returns {string}
              */
-            bark () {
-                return `barking`;
+            static bark () {
+
+                if (Dog.bark) {
+                    return `barking`;
+                } else {
+                    throw Error('myDog.bark is not a function');
+                }
+                
             }
 
         }
@@ -120,7 +131,9 @@ describe('DAY 8: classes', () => {
 
             /**
              * @returns {Dog}
-             */
+             * 
+             * */
+            
             constructor () {
                 this.favoriteThing = `food`;
                 this[Symbol(`dogName`)] = '';
@@ -143,6 +156,7 @@ describe('DAY 8: classes', () => {
             }
 
         }
+
 
         let myDog = new Dog();
         myDog.name = `Copernicus`;
