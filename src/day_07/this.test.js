@@ -137,25 +137,29 @@ it(`lexical this
 
     function A () {
         this.b = function () {
+            let z = d.c
             // use lexical scope to fix this
-              this.function ( ) {
-                  return d.c
-                };
-            
+            return function () {
+            return z;
+            }
         };
 
-        this.c = 'hi';
+         this.c = function () {
+             return a.c;
+         }
     }
     let d = {
         b: a.b,
         c: 'bye',
-        e: a.c
+        e: a.c()
     };
 
-    let f = a.c;
-
+    let f = function (){
+        return a.c;
+    }
     expect(d.b()()).toBe(d.c);
-    expect(d.e()).toBe(a.c);
     expect(f()).toBe(a.c);
+    expect(d.e()).toBe(a.c);
+    
 });
 });
