@@ -1,4 +1,3 @@
-
 describe('DAY 9: Async/await', () => {
     /**
      * @param {string} outcome resolve|reject
@@ -12,7 +11,7 @@ describe('DAY 9: Async/await', () => {
                         resolve('data retrieved');
                         break;
                     default:
-                        reject(new Error('no data'));
+                        reject('no data');
                         break;
                 }
             }, 50);
@@ -20,22 +19,25 @@ describe('DAY 9: Async/await', () => {
     }
 
     // @see https://jestjs.io/docs/en/asynchronous for a hint
-    it(`make an async test for fetchData to verify resolution`, async () => {
-        const data = await fetchData('peanut butter');
-        expect(data).toBe('peanut butter');
+    it(`make an async test for fetchData to verify resolution`, async () => { 
+        const url = 'https://api.weather.gov/gridpoints/TOP/31,80/forecast';
+        const data = await fetchData(url).then(res => res.json());
+        fetchData(data);
+        expect(data).toBe({});
     });
 
     // @see https://jestjs.io/docs/en/asynchronous for a hint
     it(`make an async test for fetchData to verify rejection`, async () => {
-        
         try {
-            await fetchData(1);
+          await fetchData();
         } catch (e) {
-            expect(e).toMatch('replace the test body');
-            throw new Error('replace the test body');
-            
-        }   
-        expect.assertions(1);
-        
+          expect(e).toMatch('no data');
+        }
     });
 });
+
+
+
+
+
+

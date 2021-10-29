@@ -12,9 +12,11 @@ describe('DAY 9: Callback', () => {
          * @param {function} callback 
          * @returns {undefined}
          */
-        let caller = () => {};
+        let caller = (callbackArgument) => {
+            return callbackArgument;
+        };
 
-        let result = caller();
+        let result = caller(callbackArgument);
 
         expect(callback).toBeCalledWith(callbackArgument);
         expect(result).toBe(callback);

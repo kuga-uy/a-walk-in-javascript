@@ -14,7 +14,7 @@ describe('DAY 9: Promises', () => {
          */
         function validateString (input) {
             return new Promise((resolve, reject) => {
-                
+                resolve(typeof (input) === 'string' ? input : reject(new TypeError(`${input} is not a string`)));
             });
         }
 
@@ -31,6 +31,7 @@ describe('DAY 9: Promises', () => {
         }).then(() => {
             return validateString(input2);
         }).catch((error) => {
+            
             expect(error).toBeInstanceOf(TypeError);
             expect(error.message).toBe(`${input2} is not a string`);
         });
@@ -50,6 +51,7 @@ describe('DAY 9: Promises', () => {
         function validateString (input) {
             return new Promise((resolve, reject) => {
                 resolve(input);
+                
             });
         }
 
@@ -60,7 +62,7 @@ describe('DAY 9: Promises', () => {
          */
         function stringToUpper (input) {
             return new Promise((resolve, reject) => {
-                resolve('change me');
+                resolve(input.toUpperCase());
             });
         }
 

@@ -16,7 +16,7 @@ describe('DAY 7: generators', () => {
          */
         function* gen (msg) {
             let index = 0;
-            while (index < msg.length){
+            while (index < msg.length) {
                yield msg[index++];
             }
         }

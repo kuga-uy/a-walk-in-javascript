@@ -92,68 +92,70 @@ describe('DAY 7: this keyword', () => {
         }
 
         // complete the code to pass the test
-        let w = new b(a);
+        let w = new b (a);
 
         expect(w).toBe(a.c);
         expect(typeof a.x).toBe('number');
         expect(typeof a.y).toBe('number');
     });
 
-    it(`function b should resolve this to object a`, () => {
+it(`function b should resolve this to object a`, () => {
 
-        /**
-         * 
-         * @memberof a
-         * @returns {array}
-         */
-        function b (a) {
-            this.a = a;
-            return this.a.c;
-        } 
-        let a = {
-            // complete the object property to pass the test
-            b: b(),
-            c: [1, 2, 3]
-        };
-        
-        expect(a.b).toBe(b);
-        expect(a.b()).toBe(a.c);
+    /**
+     * 
+     * @memberof a
+     * @returns {array}
+     */
 
-    });
+     let a = {
+        // complete the object property to pass the test
+        b: b,
+        c: [1, 2, 3]
+    };
 
-    it(`lexical this
-        can you fix it?`, () => {
+    function b (a) {
+        this.a = a;
+        return this.a.c;
+    } 
+   
+    expect(a.b).toBe(b);
+    expect(a.b()).toBe(a.c);
 
-        /**
-         * @returns {undefined|object}
-         */
-        function A () {
+});
 
-            this.b = function () {
-                // use lexical scope to fix this
-                return function (c, d) {
-                    this.c = c;
-                    this.d = d;
-                    return this.d.c;
-                };
+it(`lexical this
+    can you fix it?`, () => {
 
+    /**
+     * @returns {undefined|object}
+     */
+    function A () {
+
+        this.b = function () {
+            // use lexical scope to fix this
+            return function (c, d) {
+                this.c = c;
+                this.d = d;
+                return this.d.c;
             };
 
-            this.c = 'hi';
-        }
-
-        let a = new A();
-
-        let d = {
-            b: a.b,
-            c: 'bye',
-            e: a.c()
         };
 
-        let f = a.c();
+        this.c = 'hi';
+    }
 
-        expect(d.b()()).toBe(d.c);
-        expect(d.e()).toBe(a.c);
-        expect(f()).toBe(a.c);
-    });
+    let a = new A();
+
+    let d = {
+        b: a.b,
+        c: 'bye',
+        e: a.c()
+    };
+
+    let f = a.c();
+
+    expect(d.b()()).toBe(d.c);
+    expect(d.e()).toBe(a.c);
+    expect(f()).toBe(a.c);
+});
 });
