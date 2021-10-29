@@ -20,10 +20,14 @@ describe('DAY 9: Async/await', () => {
 
     // @see https://jestjs.io/docs/en/asynchronous for a hint
     it(`make an async test for fetchData to verify resolution`, async () => { 
-        const url = 'https://api.weather.gov/gridpoints/TOP/31,80/forecast';
-        const data = await fetchData(url).then(res => res.json());
-        fetchData(data);
-        expect(data).toBe({});
+
+        try {
+            const url = 'https://api.weather.gov/gridpoints/TOP/31,80/forecast';
+            await fetchData(url);
+            expect(fetchData()).toMatch('data retrived');
+          } catch (e) {
+            console.log(e);
+          }
     });
 
     // @see https://jestjs.io/docs/en/asynchronous for a hint
