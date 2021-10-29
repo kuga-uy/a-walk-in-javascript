@@ -107,16 +107,18 @@ it(`function b should resolve this to object a`, () => {
      * @returns {array}
      */
 
+
+    
      let a = {
         // complete the object property to pass the test
         b: b,
         c: [1, 2, 3]
     };
 
-    function b (a) {
-        this.a = a;
-        return this.a.c;
+    function b () {
+      return  a.c
     } 
+
    
     expect(a.b).toBe(b);
     expect(a.b()).toBe(a.c);
@@ -129,30 +131,28 @@ it(`lexical this
     /**
      * @returns {undefined|object}
      */
-    function A () {
+   
 
+    let a = new A();
+
+    function A () {
         this.b = function () {
             // use lexical scope to fix this
-            return function (c, d) {
-                this.c = c;
-                this.d = d;
-                return this.d.c;
-            };
-
+              this.function ( ) {
+                  return d.c
+                };
+            
         };
 
         this.c = 'hi';
     }
-
-    let a = new A();
-
     let d = {
         b: a.b,
         c: 'bye',
-        e: a.c()
+        e: a.c
     };
 
-    let f = a.c();
+    let f = a.c;
 
     expect(d.b()()).toBe(d.c);
     expect(d.e()).toBe(a.c);

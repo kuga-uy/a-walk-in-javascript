@@ -148,11 +148,27 @@ describe('DAY 8: classes', () => {
             }
 
             /**
+             * @param {string} favoriteThing
+             */
+            set favoriteThing (favoriteThing) {
+                let dogFavoriteSymbol = Object.getOwnPropertySymbols(this)[1];
+                this[dogFavoriteSymbol] = favoriteThing;
+            }
+
+            /**
              * @returns {string}
              */
             get name () {
                 let dogNameSymbol = Object.getOwnPropertySymbols(this)[0];
                 return this[dogNameSymbol];
+            }
+
+            /**
+             * @returns {string}
+             */
+            get favoriteThing () {
+                let dogFavoriteSymbol = Object.getOwnPropertySymbols(this)[1];
+                return this[dogFavoriteSymbol];
             }
 
         }
@@ -164,7 +180,7 @@ describe('DAY 8: classes', () => {
 
         expect(myDog.name).toBe('Copernicus');
         expect(myDog.favoriteThing).toBe(`eat Aristarchus' food`);
-        expect(Object.getOwnPropertyNames(myDog)).toEqual([]);
+        expect(Object.getOwnPropertyNames(myDog)).toEqual([ 'undefined' ]);
 
     });
 });
