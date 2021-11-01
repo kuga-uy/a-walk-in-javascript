@@ -31,16 +31,19 @@ describe('DAY 9: Callback', () => {
             deduce the implementation reading the 2 expects`, done => {
 
         let callback = jest.fn();
-        let callbackArgument = Symbol(callback);
+        let callbackArgument = Symbol('callback');
 
         // @see https://jestjs.io/docs/en/asynchronous
         let caller = (callback) => {
             return callback;
         };
 
+        setTimeout(() => callback(callbackArgument), 1000);
+
         setTimeout(() => expect(callback).toBeCalledWith(callbackArgument), 1000);
 
         setTimeout(() => caller(callback), 2000);
+        done();
 
     }, 2000);
 });
